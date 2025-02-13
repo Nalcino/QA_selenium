@@ -9,18 +9,16 @@ import time
 service = Service("chromedriver.exe")
 driver = webdriver.Chrome(service=service)
 
-# Abre a página de cadastro
+
 driver.get("https://kathon.tech/CadastroEstudante")
-driver.maximize_window()  # Maximiza a tela para evitar erros de visibilidade
+driver.maximize_window()  
 
 try:
     wait = WebDriverWait(driver, 10)
-
-    # Preenche o campo "Nome"
+    
     nome_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@type='text']")))
     nome_input.send_keys("Paulo Henrique")
 
-    # Preenche o campo "Email"
     email_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@type='email']")))
     email_input.send_keys("paulo@exemplo.com")
 
@@ -36,7 +34,7 @@ try:
     nascimento_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@type='date']")))
     nascimento_input.send_keys("2000-01-01")  # Formato: YYYY-MM-DD
 
-    # Preenche o campo "Celular"
+    
     celular_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@type='text'][@placeholder='']")))
     celular_input.send_keys("11999999999")
 
@@ -44,11 +42,11 @@ try:
     senha_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@type='password']")))
     senha_input.send_keys("senha123")
 
-    # Clica no botão "Cadastrar Jovem"
+    
     cadastrar_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Cadastrar Jovem')]")))
     cadastrar_button.click()
 
-    # Aguarda alguns segundos para o processamento
+    
     time.sleep(5)
     print("Cadastro realizado com sucesso!")
 
